@@ -506,11 +506,19 @@ const ExpectBuilder = ({ expect, onChange }: ExpectBuilderProps) => {
   <>
     <div>
       <Label>Function Name</Label>
-      <Input
+      <Select
         value={item.name || ""}
-        onChange={(e) => updateExpect(index, "name", e.target.value)}
-        placeholder="validar_fecha_compromiso"
-      />
+        onValueChange={(value) => updateExpect(index, "name", value)}
+      >
+        <SelectTrigger>
+          <SelectValue placeholder="Selecciona una función..." />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="end_call">Finalizar llamada</SelectItem>
+          <SelectItem value="transfer_call">Transferir llamada</SelectItem>
+          <SelectItem value="validar_fecha_compromiso">Validar fecha</SelectItem>
+        </SelectContent>
+      </Select>
     </div>
 
     {item.arguments ? (
